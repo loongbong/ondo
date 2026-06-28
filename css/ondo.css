@@ -71,7 +71,7 @@ body::before { opacity: 0.28; }
 .band .container { max-width: var(--maxw); }
 .band--feature { background: radial-gradient(ellipse 90% 60% at 50% 0%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 70%); }
 #numbers { border-top: 0; padding-top: 0; }
-.band__intro { color: var(--text-dim); max-width: 64ch; margin: 0.4rem 0 1.6rem; }
+.band__intro { color: var(--text-dim); max-width: none; margin: 0.4rem 0 1.6rem; }
 .band__intro b, .stack__desc b, .bottomline p b { color: var(--text); font-weight: 600; }
 .beat__label { margin-bottom: 1.2rem; }
 
@@ -149,7 +149,7 @@ body::before { opacity: 0.28; }
 .thesis__line { width: 0; flex: 1 1 auto; min-height: 70px; border-left: 1.5px dashed color-mix(in srgb, var(--accent) 70%, var(--line)); transform: scaleY(0); transform-origin: top; transition: transform var(--d-draw) var(--ease) 0.2s; }
 .thesis.is-in .thesis__line { transform: scaleY(1); }
 .thesis__bridgelab { font-size: 0.68rem; line-height: 1.4; letter-spacing: 0.04em; color: var(--text-faint); text-align: center; max-width: 130px; }
-.thesis__caption { margin-top: 1.3rem; color: var(--text-dim); font-size: 0.95rem; max-width: 70ch; }
+.thesis__caption { margin-top: 1.3rem; color: var(--text-dim); font-size: 0.95rem; max-width: none; }
 
 @media (max-width: 640px) {
   .thesis { grid-template-columns: 1fr; gap: 0; }
@@ -175,7 +175,7 @@ body::before { opacity: 0.28; }
 .ratepass__val .pfx, .ratepass__val .sfx { color: var(--accent); font-size: 0.6em; }
 .ratepass__arrow { flex: 0 0 auto; font-size: 0.68rem; letter-spacing: 0.04em; color: var(--accent); white-space: nowrap; }
 .ratepass__chev { display: inline-block; }
-.raterow__prose { color: var(--text-dim); line-height: 1.65; max-width: 70ch; }
+.raterow__prose { color: var(--text-dim); line-height: 1.65; max-width: none; }
 .raterow__prose p { margin: 0 0 0.85em; }
 .raterow__prose p:last-child { margin-bottom: 0; }
 .raterow__prose strong { color: var(--text); font-weight: 500; }
@@ -196,7 +196,7 @@ body::before { opacity: 0.28; }
 .tok__legend { list-style: none; margin: 0 0 1.1rem; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.84rem; color: var(--text-dim); }
 .tok__legend b { color: var(--text); font-weight: 600; margin-left: 0.2rem; }
 .tok__sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--c); margin-right: 0.6rem; vertical-align: -1px; }
-.tok__note { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; max-width: 60ch; }
+.tok__note { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; max-width: none; }
 .tok__note b { color: var(--text); font-weight: 600; }
 @media (max-width: 640px) { .tok { grid-template-columns: 1fr; } }
 
@@ -218,7 +218,7 @@ body::before { opacity: 0.28; }
 .tl__what { font-size: 0.92rem; color: var(--text-dim); line-height: 1.45; }
 .tl__what b { color: var(--text); font-weight: 600; }
 @media (max-width: 560px) { .tl__stops { gap: 0.5rem; } .tl__when { font-size: 0.74rem; } .tl__what { font-size: 0.8rem; } }
-.timeline__caption { margin-top: 1.4rem; color: var(--text-dim); font-size: 0.92rem; line-height: 1.6; max-width: 72ch; }
+.timeline__caption { margin-top: 1.4rem; color: var(--text-dim); font-size: 0.92rem; line-height: 1.6; max-width: none; }
 
 /* =========================================================================
    What I would monitor (numbered priority list)
