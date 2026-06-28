@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ondo Finance ($ONDO): platform versus token | research note</title>
+  <meta name="description" content="An independent due-diligence note on Ondo Finance ($ONDO): the RWA tokenisation stack, why the platform keeps almost no revenue today and the token captures none, the rate-dependence of the yield, and the tokenomics overhang. No position held." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#010409" />
+  <link rel="canonical" href="https://loongbong.github.io/ondo/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://loongbong.github.io/ondo/" />
+  <meta property="og:title" content="Ondo Finance ($ONDO): platform versus token" />
+  <meta property="og:description" content="Independent RWA-tokenisation research note. The platform keeps little revenue today; the token captures none. No position held; figures as of mid-2026." />
+  <meta property="og:image" content="https://loongbong.github.io/ondo/assets/og-ondo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ondo Finance ($ONDO): platform versus token" />
+  <meta name="twitter:description" content="Independent RWA-tokenisation research note. The platform keeps little revenue today; the token captures none. No position held." />
+  <meta name="twitter:image" content="https://loongbong.github.io/ondo/assets/og-ondo.png" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/ondo.css" />
+  <noscript><style>
+    /* No JS: reveal everything to its final visible state (vizzes are progressive enhancement) */
+    .reveal, .stat, .thesis__side, .tok__svg { opacity: 1 !important; transform: none !important; }
+    .thesis__line { transform: scaleY(1) !important; }
+    .tl__line { transform: scaleX(1) !important; }
+    .tl__stop { opacity: 1 !important; transform: none !important; }
+    .stack__fill { width: 90% !important; }
+  </style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#takeaways">Skip to takeaways</a>
+
+  <!-- Sticky section nav (revealed past the masthead) -->
+  <header class="topbar" id="topbar" aria-hidden="true">
+    <a class="topbar__mark" href="#top">Loong Bong</a>
+    <nav class="ondonav" id="ondonav" aria-label="Sections">
+      <a href="#takeaways">Takeaways</a>
+      <a href="#stack">Stack</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#rates">Rates</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#risks">Risks</a>
+      <a href="#monitor">Monitor</a>
+    </nav>
+    <a class="topbar__linkedin mono" href="https://linkedin.com/in/loong-bong" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+  </header>
+
+  <main id="top">
+    <!-- MASTHEAD -->
+    <section class="masthead" id="masthead">
+      <div class="container">
+        <div class="masthead__meta mono">Independent research note · June 2026</div>
+        <h1 class="masthead__title">Ondo Finance <span class="masthead__ticker">($ONDO)</span></h1>
+        <p class="masthead__sub">Tokenising Wall Street, and the gap between platform and token.</p>
+        <div class="masthead__byline">
+          <span class="masthead__by">by</span>
+          <span class="masthead__author">Loong Bong</span>
+          <a class="masthead__linkedin" href="https://linkedin.com/in/loong-bong" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+        </div>
+
+        <div class="disclosure" role="note" aria-label="Disclosure">
+          <strong>I hold no position in $ONDO or any Ondo product.</strong> This is research, not investment advice. Figures are as of mid-2026 and move fast; rwa.xyz and DefiLlama are the standard public trackers and the source for most of the on-chain numbers below.
+        </div>
+
+        <div class="masthead__tags">
+          <span class="tag">RWA / tokenisation</span>
+          <span class="tag">due-diligence note</span>
+          <span class="tag">as of mid-2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BY THE NUMBERS -->
+    <section class="band" id="numbers">
+      <div class="container">
+        <div class="readout" data-viz="readout" style="--cols:4">
+          <div class="readout__lead">The headline figures, and where each one comes from. The first is the <b>business</b>; the rest are the <b>token</b> and its <b>rate</b>.</div>
+          <div class="stat">
+            <div class="stat__hd"><span class="stat__ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="6.4" rx="6.4" ry="2.7"/><path d="M3.6 6.4 V13 C3.6 14.5 6.5 15.7 10 15.7 C13.5 15.7 16.4 14.5 16.4 13 V6.4"/><path d="M3.6 9.7 C3.6 11.2 6.5 12.4 10 12.4 C13.5 12.4 16.4 11.2 16.4 9.7"/></svg></span><span class="stat__field">across the stack</span></div>
+            <div class="stat__val"><span class="pfx">$</span><span class="num" data-to="3.65" data-dec="2">3.65</span><span class="sfx">B</span></div>
+            <div class="stat__label">sits across the four product lines</div>
+          </div>
+          <div class="stat">
+            <div class="stat__hd"><span class="stat__ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15 L15 5"/><circle cx="6.4" cy="6.4" r="1.9"/><circle cx="13.6" cy="13.6" r="1.9"/></svg></span><span class="stat__field">T-bill yield</span></div>
+            <div class="stat__val"><span class="pfx">~</span><span class="num" data-to="3.8" data-dec="1">3.8</span><span class="sfx">%</span></div>
+            <div class="stat__label">what short-term Treasuries pay; holders get ~3.5%</div>
+          </div>
+          <div class="stat">
+            <div class="stat__hd"><span class="stat__ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.3"/><path d="M10 3 A7 7 0 0 1 10 17"/></svg></span><span class="stat__field">circulating</span></div>
+            <div class="stat__val"><span class="pfx">~</span><span class="num" data-to="48.7" data-dec="1">48.7</span><span class="sfx">%</span></div>
+            <div class="stat__label">of the fixed 10B supply, mid-2026</div>
+          </div>
+          <div class="stat">
+            <div class="stat__hd"><span class="stat__ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.3"/><path d="M10 5.6 V10 L13 12"/></svg></span><span class="stat__field">Jan 2027 unlock</span></div>
+            <div class="stat__val"><span class="pfx">~</span><span class="num" data-to="19" data-dec="0">19</span><span class="sfx">%</span></div>
+            <div class="stat__label">of supply (~1.94B); annual cliffs to 2029</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY TAKEAWAYS -->
+    <section class="band" id="takeaways">
+      <div class="container">
+        <div class="beat__label">Key takeaways</div>
+        <div class="cards cards--2">
+          <div class="card reveal">
+            <div class="card__choice">Ondo is the most complete pure-play in RWA tokenisation.</div>
+            <div class="card__why">Four product lines, about <b>$3.65B</b> across the stack:</div>
+            <ul class="card__list">
+              <li>tokenised US Treasuries (OUSG, USDY)</li>
+              <li>a fast-growing tokenised-equities venue (Global Markets)</li>
+              <li>an institutional chain in testnet (Ondo Chain)</li>
+              <li>a new fund alongside State Street and Galaxy</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <div class="card__choice">The business and the token are two different investments.</div>
+            <div class="card__why">Ondo's products generate real yield, but Ondo keeps almost none of it today and <b>$ONDO captures none of it at all.</b> The bull case for the token is largely a bet that the DAO eventually flips a fee switch, and that is optionality. It belongs at an optionality price, not a claim on cash flow.</div>
+          </div>
+          <div class="card reveal">
+            <div class="card__choice">The flagship product is a bet on interest rates, whether or not anyone says so.</div>
+            <div class="card__why">USDY and OUSG holders earn roughly 3.5%, tracking the ~3.8% that short-term Treasuries now pay, less a thin spread Ondo keeps. <b>That yield belongs to the US Treasury, not to Ondo</b>, and it is already drifting lower as the Fed cuts.</div>
+          </div>
+          <div class="card reveal">
+            <div class="card__choice">The fight Ondo has to win is distribution, not technology.</div>
+            <div class="card__why">BlackRock, Circle, and Franklin Templeton can tokenise a money-market fund any morning they decide to. Ondo's edge is <b>being everywhere at once (multi-chain), staying neutral, and getting there first</b>, rather than being technically untouchable.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT STACK -->
+    <section class="band" id="stack">
+      <div class="container">
+        <div class="beat__label">The product stack</div>
+        <p class="band__intro">Ondo was founded in 2021 by Nathan Allman, out of Goldman Sachs's digital-assets team. Allman died unexpectedly in May 2026, and Ian De Bode, formerly president, is now chief executive. The company is chasing one thing: <b>owning the rails for tokenised securities end to end</b>, from the asset down to the settlement layer. Four product lines carry the story.</p>
+        <p class="band__intro">The sizes below are face-value figures from the trackers, shown as labels; the bars are an illustrative echo, not a measured axis.</p>
+
+        <div class="stack" data-viz="stack">
+          <div class="stack__row" data-w="2160">
+            <div class="stack__hd"><span class="stack__name">USDY</span><span class="stack__val">~$2.16B</span></div>
+            <div class="stack__bar"><span class="stack__fill"></span></div>
+            <div class="stack__sub mono">~3.5% yield (mid-2026) · across several chains · non-US holders who clear KYC</div>
+            <div class="stack__desc">A dollar token backed by short-term US Treasuries and bank deposits, with no management fee: Ondo sets the holder rate just below what its assets earn and keeps the difference, plus a small redemption fee. <b>A yield-bearing stable-value instrument rather than a stablecoin.</b></div>
+          </div>
+          <div class="stack__row" data-w="479">
+            <div class="stack__hd"><span class="stack__name">OUSG</span><span class="stack__val">~$479M</span></div>
+            <div class="stack__bar"><span class="stack__fill"></span></div>
+            <div class="stack__sub mono">routes into BlackRock's BUIDL (rival and upstream both) · 0.15% fee waived to Jan 2027 · permissioned</div>
+            <div class="stack__desc">A tokenised short-term Treasuries fund, down to around $479M after roughly $135M of outflows in a month. <b>The institutional product; USDY is the one ordinary non-US users can actually hold.</b></div>
+          </div>
+          <div class="stack__row" data-w="875">
+            <div class="stack__hd"><span class="stack__name">Global Markets</span><span class="stack__val">~$875M</span></div>
+            <div class="stack__bar"><span class="stack__fill"></span></div>
+            <div class="stack__sub mono">430+ assets · $18B+ cumulative volume (on Ondo's account) · 3 chains (Ethereum, Solana, BNB Chain) · SEC registration confidentially filed</div>
+            <div class="stack__desc">Tokenised US stocks and ETFs for non-US investors, live since September 2025; it crossed $1B in value in May before easing back. <b>Ondo confidentially filed a registration statement with the SEC for this business rather than route around the rules.</b></div>
+          </div>
+          <div class="stack__row stack__row--pending">
+            <div class="stack__hd"><span class="stack__name">Ondo Chain</span><span class="stack__pill mono">testnet · mainnet target 2026</span></div>
+            <div class="stack__sub mono">a purpose-built L1 for tokenised finance</div>
+            <div class="stack__desc">Permissioned validators, RWA-backed staking, enshrined oracles, native omnichain bridging. <b>Ondo is onboarding broker-dealers and distributors before it opens the network, so the chain launches with real participants.</b></div>
+          </div>
+          <p class="stack__foot mono">A new fund alongside State Street and Galaxy (the SWEEP fund) rounds out the stack, with Ondo as an anchor investor of about $200M.</p>
+        </div>
+
+        <div class="callout" role="note">
+          <div class="callout__hd">Reading the numbers</div>
+          <p>Ondo is the second-largest platform in a tokenised-US-Treasury market that rwa.xyz puts at about $14.6B (mid-2026), inside a wider RWA market above $20B. The Global Markets volume figure is the traction signal I weight most, because trading volume is far harder to manufacture than a static TVL snapshot.</p>
+          <p>Two honesty notes on the data:</p>
+          <ul class="note-list">
+            <li><b>The treasury leaderboard is contested.</b> Circle's USYC leads near $3.1B, Ondo follows around $2.7B, and Franklin Templeton's BENJI and BlackRock's BUIDL (issued through Securitize) sit just behind, so I would not hand Ondo a fixed market share. The honest read is a top-three platform in treasuries, second at the moment but losing ground recently as OUSG bleeds even while USDY holds, and a clear leader in tokenised equities.</li>
+            <li><b>Headline TVL is a directional read, not gospel.</b> In 2025 an investor publicly questioned whether some RWA TVL is overstated. That was an allegation, not a proven finding, but it is a fair reminder to account for redemption mechanics and double-counting across wrapped products.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENTRAL THESIS (centrepiece) -->
+    <section class="band band--feature" id="thesis">
+      <div class="container">
+        <div class="beat__label">The central thesis: platform versus token</div>
+        <p class="band__intro">A lot of coverage answers two separate questions as if they were one. Keeping them apart is the whole point of this note.</p>
+
+        <div class="thesis" data-viz="thesis">
+          <div class="thesis__side thesis__side--platform">
+            <div class="thesis__tag mono">the platform</div>
+            <div class="thesis__claim">Generates yield, keeps little.</div>
+            <ul class="thesis__list">
+              <li>A large, sticky asset base of about $3.65B.</li>
+              <li>OUSG's management fee waived to January 2027.</li>
+              <li>USDY's yield passed through to holders bar a thin spread.</li>
+            </ul>
+            <div class="thesis__verdict">A strong franchise whose monetisation is mostly switched off today, by choice, to win share.</div>
+          </div>
+
+          <div class="thesis__bridge" aria-hidden="true">
+            <span class="thesis__src"></span>
+            <span class="thesis__line"></span>
+            <div class="thesis__bridgelab mono">fee-switch optionality<br />(the DAO has not voted)</div>
+          </div>
+
+          <div class="thesis__side thesis__side--token">
+            <div class="thesis__tag mono">the token ($ONDO)</div>
+            <div class="thesis__claim">Captures none of it today.</div>
+            <ul class="thesis__list">
+              <li>Governance, and not much else.</li>
+              <li>No contractual claim on the company's earnings.</li>
+              <li>Its price is the market pre-paying for a future the DAO has not voted on.</li>
+            </ul>
+            <div class="thesis__verdict">Closer to a share that pays no dividend: a value case more contingent than the platform's.</div>
+          </div>
+        </div>
+        <div class="callout" role="note">
+          <div class="callout__hd">Sizing the gap (back of the envelope)</div>
+          <p>The token is worth about $1.5B today and about $3.1B fully diluted. The products generate on the order of $55M a year of yield. Ondo keeps almost none of it today: on the public trackers its current protocol revenue rounds to zero, and the most it has ever booked is about $21M, recorded before the fees were switched off. The token receives none of it. So roughly $3.1B of fully diluted value rests on optionality rather than on cash flow. The assumptions are explicit and the figures move; the point is the shape, not false precision.</p>
+        </div>
+        <p class="thesis__caption">The discipline is to price the fee switch as optionality, rather than quietly treat platform growth as if it already flows to the token.</p>
+      </div>
+    </section>
+
+    <!-- RATE DEPENDENCE -->
+    <section class="band" id="rates">
+      <div class="container">
+        <div class="beat__label">Rate-dependence</div>
+        <div class="raterow">
+          <div class="ratepass" data-viz="ratepass">
+            <div class="ratepass__node">
+              <div class="ratepass__field mono">US Treasury T-bills</div>
+              <div class="ratepass__val"><span class="pfx">~</span><span class="num" data-to="3.8" data-dec="1">3.8</span><span class="sfx">%</span></div>
+            </div>
+            <div class="ratepass__arrow mono" aria-hidden="true">less a thin spread <span class="ratepass__chev">&rarr;</span></div>
+            <div class="ratepass__node">
+              <div class="ratepass__field mono">USDY · OUSG holders</div>
+              <div class="ratepass__val"><span class="pfx">~</span><span class="num" data-to="3.5" data-dec="1">3.5</span><span class="sfx">%</span></div>
+            </div>
+          </div>
+          <div class="raterow__prose">
+            <p>The entire pitch of USDY and OUSG is T-bill yield, on-chain, around the clock. That yield belongs to the US Treasury, not to Ondo, and it leaves when rates do. It has already started to leave: short-term Treasury yields have fallen from about 4.3% a year ago to about 3.8% now as the Fed cuts, and holders, who receive that yield less a thin spread Ondo keeps, are down to about 3.5%. If the cutting cycle continues, tokenised treasuries look less compelling next to other on-chain yield.</p>
+            <p><strong>I spend my day job pricing cost of capital and rate-sensitive cash flows</strong>, so this is the risk I flag first, and the one the standard bull case tends to pass over.</p>
+            <p class="raterow__cond">The bull case survives only if:</p>
+            <ul class="note-list">
+              <li>rates stabilise; or</li>
+              <li>Ondo scales equities and Ondo Chain fast enough to outgrow the yield it is losing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section class="band" id="tokenomics">
+      <div class="container">
+        <div class="beat__label">Tokenomics</div>
+        <div class="tok">
+          <div class="tok__donutwrap" data-viz="donut">
+            <svg class="tok__svg" viewBox="0 0 200 200" focusable="false" aria-hidden="true"></svg>
+            <div class="tok__center mono"><span class="tok__total">10B</span><span class="tok__totallab">total supply</span></div>
+          </div>
+          <div class="tok__side">
+            <ul class="tok__legend mono">
+              <li><span class="tok__sw" style="--c:var(--cool)"></span>Ecosystem Growth <b>~52%</b></li>
+              <li><span class="tok__sw" style="--c:var(--cool-2)"></span>Protocol Development <b>~33%</b></li>
+              <li><span class="tok__sw" style="--c:var(--warm-2)"></span>private sales <b>~13%</b></li>
+              <li><span class="tok__sw" style="--c:var(--mid)"></span>community sale <b>~2%</b></li>
+            </ul>
+            <p class="tok__note">Fixed 10B total supply, of which roughly 4.87B (<b>~48.7%</b>) is circulating in mid-2026.</p>
+            <p class="tok__note">The supply side is a known, scheduled headwind: vesting runs into 2029, and demand currently rests on governance value plus the fee-switch optionality rather than on present cash flow.</p>
+          </div>
+        </div>
+
+        <div class="timeline" data-viz="timeline">
+          <div class="timeline__label mono">Unlock and vesting schedule</div>
+          <div class="tl" role="img" aria-label="Unlock timeline: now in mid-2026 with about 48.7 percent circulating; large tranches unlock every January through 2029, with the January 2027 instalment about 1.94 billion tokens, close to 19 percent of supply.">
+            <div class="tl__line"></div>
+            <div class="tl__stops">
+              <div class="tl__stop">
+                <span class="tl__dot"></span>
+                <div class="tl__when mono">now (mid-2026)</div>
+                <div class="tl__what">~48.7% circulating</div>
+              </div>
+              <div class="tl__stop tl__stop--key">
+                <span class="tl__dot"></span>
+                <div class="tl__when mono">Jan 2027</div>
+                <div class="tl__what"><b>~1.94B cliff</b><br />~19%, next of the annual unlocks</div>
+              </div>
+              <div class="tl__stop">
+                <span class="tl__dot"></span>
+                <div class="tl__when mono">into 2029</div>
+                <div class="tl__what">annual cliffs run out</div>
+              </div>
+            </div>
+          </div>
+          <p class="timeline__caption">A meaningful share of $ONDO also trades in perpetual-futures markets, which tends to amplify the moves around the annual unlock dates. A re-rating that finally connects token to platform is the bull thesis; the unlock calendar is the clock ticking against it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISK / BEAR CASE -->
+    <section class="band" id="risks">
+      <div class="container">
+        <div class="beat__label">Risk and bear case: what would falsify the thesis</div>
+        <div class="dt2 dt2--single" data-viz="risks">
+          <ol class="dt2__list">
+            <li class="dt2__item is-active" data-i="0">
+              <button class="dt2__head" aria-expanded="true"><span class="dt2__num">01</span><span class="dt2__choice">Rate compression</span></button>
+              <div class="dt2__body"><div class="dt2__bodyinner">
+                <div class="dt2__why">A sustained cutting cycle erodes the core yield proposition before equities and Ondo Chain are big enough to cover the gap.</div>
+                <div class="dt2__alt"><b>Watch for:</b> USDY and OUSG growth stalling as the policy rate falls.</div>
+              </div></div>
+            </li>
+            <li class="dt2__item" data-i="1">
+              <button class="dt2__head" aria-expanded="false"><span class="dt2__num">02</span><span class="dt2__choice">The token-value gap never closes</span></button>
+              <div class="dt2__body"><div class="dt2__bodyinner">
+                <div class="dt2__why">If the DAO never flips the fee switch, or governance value never really shows up, a thriving platform and a stranded token can coexist indefinitely.</div>
+                <div class="dt2__alt"><b>Watch for:</b> a fee-switch proposal failing or being parked.</div>
+              </div></div>
+            </li>
+            <li class="dt2__item" data-i="2">
+              <button class="dt2__head" aria-expanded="false"><span class="dt2__num">03</span><span class="dt2__choice">Incumbents win on distribution</span></button>
+              <div class="dt2__body"><div class="dt2__bodyinner">
+                <div class="dt2__why">BlackRock, Circle, and Franklin Templeton bring brand, trust, and balance sheet. If tokenised treasuries become a feature the giants offer rather than a category Ondo leads, Ondo's treasury edge thins to the equities and infrastructure layers.</div>
+                <div class="dt2__alt"><b>Watch for:</b> Ondo's treasury share on rwa.xyz drifting down as BUIDL, USYC, and BENJI scale.</div>
+              </div></div>
+            </li>
+            <li class="dt2__item" data-i="3">
+              <button class="dt2__head" aria-expanded="false"><span class="dt2__num">04</span><span class="dt2__choice">Regulation</span></button>
+              <div class="dt2__body"><div class="dt2__bodyinner">
+                <div class="dt2__why">Tokenised securities are securities. The SEC-registration route is a bet that the compliant path is the durable one. An adverse ruling, or a faster competitor on that same path, redraws the map.</div>
+                <div class="dt2__alt"><b>Watch for:</b> the outcome of the Global Markets registration.</div>
+              </div></div>
+            </li>
+            <li class="dt2__item" data-i="4">
+              <button class="dt2__head" aria-expanded="false"><span class="dt2__num">05</span><span class="dt2__choice">Key-person and leadership transition</span></button>
+              <div class="dt2__body"><div class="dt2__bodyinner">
+                <div class="dt2__why">Ondo's founder and chief executive died unexpectedly in May 2026, and a new chief executive took over mid-flight, with the SEC registration pending and Ondo Chain still pre-mainnet. A transition like this can unsettle a founder-led company at exactly the wrong moment.</div>
+                <div class="dt2__alt"><b>Watch for:</b> senior departures, a shift in strategy, or slippage in the SEC and mainnet timelines.</div>
+              </div></div>
+            </li>
+            <li class="dt2__item" data-i="5">
+              <button class="dt2__head" aria-expanded="false"><span class="dt2__num">06</span><span class="dt2__choice">Execution and concentration</span></button>
+              <div class="dt2__body"><div class="dt2__bodyinner">
+                <div class="dt2__why">Ondo Chain mainnet slipping, or institutional partners not arriving with real liquidity, would undercut the end-to-end-rails thesis. Headline TVL should always be checked against rwa.xyz rather than taken at face value.</div>
+                <div class="dt2__alt"><b>Watch for:</b> mainnet timing and the calibre of institutions that actually show up.</div>
+              </div></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I WOULD MONITOR -->
+    <section class="band" id="monitor">
+      <div class="container">
+        <div class="beat__label">What I would monitor</div>
+        <p class="band__intro">In priority order, because that order is the thesis.</p>
+        <ol class="monitor">
+          <li class="monitor__item reveal"><span class="monitor__num mono">01</span><span class="monitor__text">Any fee-switch governance proposal and how it is framed, because that is the catalyst that closes the platform-token gap.</span></li>
+          <li class="monitor__item reveal"><span class="monitor__num mono">02</span><span class="monitor__text">The policy-rate path, and what it does to USDY and OUSG growth.</span></li>
+          <li class="monitor__item reveal"><span class="monitor__num mono">03</span><span class="monitor__text">The leadership transition under the new chief executive, and whether the SEC and mainnet timelines hold.</span></li>
+          <li class="monitor__item reveal"><span class="monitor__num mono">04</span><span class="monitor__text">Ondo Chain mainnet timing, and the calibre of institutions that actually show up.</span></li>
+          <li class="monitor__item reveal"><span class="monitor__num mono">05</span><span class="monitor__text">Ondo's treasury share on rwa.xyz against BUIDL, USYC, and BENJI.</span></li>
+          <li class="monitor__item reveal"><span class="monitor__num mono">06</span><span class="monitor__text">The January unlocks, and how the market positions into them.</span></li>
+        </ol>
+
+        <div class="bottomline">
+          <div class="bottomline__lab mono">Bottom line</div>
+          <p>Ondo is the best-positioned operator in a category that is real and growing, with a franchise that is genuinely strong and a token whose value case is more contingent than the platform's. <b>The honest way to hold a view is to underwrite the business and the token separately.</b> Price the fee switch as the optionality it still is, and do not assume today's yields are permanent.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon" id="colophon">
+    <div class="colophon__cta">
+      <p class="colophon__line"><strong>I hold no position in $ONDO or any Ondo product.</strong> This is research, not investment advice. Figures are as of mid-2026.</p>
+      <nav class="colophon__links" aria-label="Contact"><a href="https://linkedin.com/in/loong-bong" target="_blank" rel="noopener">LinkedIn</a></nav>
+    </div>
+    <div class="colophon__meta mono">
+      <span>Sources: rwa.xyz, DefiLlama (TVL, fees, market sizing); Ondo Finance product docs and 2025 recap; CoinGecko and CoinMarketCap (price, supply); Tokenomist and CryptoRank (supply and unlock schedule); CoinDesk, The Block, The Defiant, Markets Media (Global Markets, SEC registration, leadership).</span>
+    </div>
+    <div class="colophon__meta mono">
+      <span>Independent research note · Loong Bong · June 2026 · figures as of mid-2026</span>
+    </div>
+  </footer>
+
+  <button class="totop" id="totop" type="button" aria-label="Back to top" hidden><span aria-hidden="true">&uarr;</span></button>
+
+  <script src="js/ondo.js" defer></script>
+</body>
+</html>
